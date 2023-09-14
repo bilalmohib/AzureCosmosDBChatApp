@@ -104,55 +104,6 @@ const Home: NextPage = () => {
           <h2 className="text-2xl mt-4 font-normal font-mono italic">
             Products
           </h2>
-          <div className="flex flex-col">
-            <label className="mt-4">Category Name</label>
-            <input
-              type="text"
-              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              onChange={(e) => setCategoryName(e.target.value)}
-            />
-            <label className="mt-4">SKU</label>
-            <input
-              type="text"
-              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              onChange={(e) => setSku(e.target.value)}
-            />
-            <label className="mt-4">Name</label>
-            <input
-              type="text"
-              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label className="mt-4">Description</label>
-
-            <input
-              type="text"
-              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <label className="mt-4">Price</label>
-
-            <input
-              type="number"
-              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              onChange={(e) => setPrice(parseInt(e.target.value))}
-            />
-            <label className="mt-4">Tags</label>
-
-            {/* Store tags as object in array */}
-            <input
-              type="text"
-              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              onChange={(e) => setTags(e.target.value)}
-            />
-          </div>
-
-          <button
-            onClick={populateData}
-            className="my-4 bg-blue-500 text-white py-2 px-4 rounded"
-          >
-            Populate Data
-          </button>
           <ul>
             {products.map((product) => (
               <li
@@ -167,6 +118,61 @@ const Home: NextPage = () => {
               </li>
             ))}
           </ul>
+          <form className="flex flex-col">
+            <label className="mt-4">Category Name</label>
+            <input
+              type="text"
+              required
+              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              onChange={(e) => setCategoryName(e.target.value)}
+            />
+            <label className="mt-4">SKU</label>
+            <input
+              type="text"
+              required
+              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              onChange={(e) => setSku(e.target.value)}
+            />
+            <label className="mt-4">Name</label>
+            <input
+              type="text"
+              required
+              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label className="mt-4">Description</label>
+
+            <input
+              type="text"
+              required
+              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <label className="mt-4">Price</label>
+
+            <input
+              type="number"
+              required
+              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              onChange={(e) => setPrice(parseInt(e.target.value))}
+            />
+            <label className="mt-4">Tags</label>
+
+            {/* Store tags as object in array */}
+            <input
+              type="text"
+              required
+              className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              onChange={(e) => setTags(e.target.value)}
+            />
+            <button
+              onClick={populateData}
+              className="my-4 bg-blue-500 text-white py-2 px-4 rounded"
+              type="submit"
+            >
+              Populate Data
+            </button>
+          </form>
         </div>
       </div>
     </main>
