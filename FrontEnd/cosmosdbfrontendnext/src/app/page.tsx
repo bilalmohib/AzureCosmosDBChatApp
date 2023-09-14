@@ -57,36 +57,59 @@ const Home: NextPage = () => {
     // Query all items in the container
     const { resources }: any = await container.items.readAll().fetchAll();
 
+    // Reverse the order of the items
+    const new_data= resources.reverse();  
+
     // Update the products state with the fetched data
-    setProducts(resources);
+    setProducts(new_data);
   };
 
   const populateData = async () => {
+    // Split the tags string into an array
+    const tagArray = tags.split(",").map((tag) => {
+      return { _id: Math.random().toString(), name: tag };
+    });
+
     // Data items
-    const items: Product[] = [
-      {
-        id: Math.random().toString(),
-        categoryId: Math.random().toString(),
-        categoryName: categoryName,
-        sku: sku,
-        name: name,
-        description: description,
-        price: price,
-        tags: tagArray,
-      },
-    ];
+    const item = {
+      id: Math.random().toString(),
+      categoryId: Math.random().toString(),
+      categoryName: categoryName,
+      sku: sku,
+      name: name,
+      description: description,
+      price: price,
+      tags: tagArray,
+    };
 
     // Create all items
-    for (const item of items) {
-      const { resource }: any = await container.items.create(item);
-      console.log(`'${resource.name}' inserted`);
-    }
-
-    // Query all items in the container
-    const { resources }: any = await container.items.readAll().fetchAll();
+    const { resources }: any = await container.items.create(item);
+    console.log(`'${resources}' inserted`);
 
     // Update the products state with the fetched data
-    setProducts(resources);
+    setProducts(
+      products.concat({
+        id: item.id,
+        categoryId: item.categoryId,
+        categoryName: item.categoryName,
+        sku: item.sku,
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        tags: item.tags,
+      })
+    );
+
+    // Reset the form
+    setCategoryName("");
+    setSku("");
+    setName("");
+    setDescription("");
+    setPrice(0);
+    setTags("");
+    setTagArray([]);
+
+    alert("Data inserted successfully");
   };
 
   useEffect(() => {
@@ -104,21 +127,14 @@ const Home: NextPage = () => {
           <h2 className="text-2xl mt-4 font-normal font-mono italic">
             Products
           </h2>
-          <ul>
-            {products.map((product) => (
-              <li
-                key={product.id}
-                className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
-              >
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <p>Price: ${product.price.toFixed(2)}</p>
-                <p>Category: {product.categoryName}</p>
-                <p>Tags: {product.tags.map((tag) => tag.name).join(", ")}</p>
-              </li>
-            ))}
-          </ul>
-          <form className="flex flex-col">
+
+          <form
+            className="flex flex-col"
+            onSubmit={(e) => {
+              e.preventDefault();
+              populateData();
+            }}
+          >
             <label className="mt-4">Category Name</label>
             <input
               type="text"
@@ -166,13 +182,27 @@ const Home: NextPage = () => {
               onChange={(e) => setTags(e.target.value)}
             />
             <button
-              onClick={populateData}
               className="my-4 bg-blue-500 text-white py-2 px-4 rounded"
               type="submit"
             >
               Populate Data
             </button>
           </form>
+
+          <ul>
+            {products.map((product) => (
+              <li
+                key={product.id}
+                className="border-2 border-gray-200 rounded-lg p-4 my-4 shadow-md"
+              >
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <p>Price: ${product.price.toFixed(2)}</p>
+                <p>Category: {product.categoryName}</p>
+                <p>Tags: {product.tags.map((tag) => tag.name).join(", ")}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </main>
