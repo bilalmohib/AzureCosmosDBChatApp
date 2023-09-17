@@ -1,9 +1,14 @@
 "use client";
 import { NextPage } from "next";
 import { useState } from "react";
-import { BsFilter } from "react-icons/bs";
+import { BsFilter, BsCameraVideo } from "react-icons/bs";
 import { BsPencilSquare, BsPencil } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
+import { GoLinkExternal } from "react-icons/go";
+import { TbUsersPlus } from "react-icons/tb";
+import { PiArrowSquareUpThin } from "react-icons/pi";
+import { PiPhoneCallThin } from "react-icons/pi";
+import { PiVideoCameraThin } from "react-icons/pi";
 import Image from "next/image";
 
 const Home: NextPage = () => {
@@ -98,7 +103,38 @@ const Home: NextPage = () => {
                   <AiOutlinePlus size={25} color="inherit" />
                 </button>
               </div>
-              <h3 className="text-2xl">Right Side</h3>
+              <div className="flex">
+                <button
+                  disabled={true}
+                  className="w-fit h-full text-lg my-auto ml-2 rounded-sm border border-[#c9c8c8] border-solid flex justify-center items-center hover:scale-105 transform transition-all duration-200 ease-in-out text-[#616161] hover:text-[#5b5fc7]
+                  disabled:opacity-50 disabled:cursor-default disabled:scale-100
+                  "
+                >
+                  <div className="flex w-fit rounded-md">
+                    <div className="mx-0 w-9 h-9 bg-[#f0f0f0] border-[#c9c8c8] border-r-[1px] flex justify-center items-center">
+                      <PiVideoCameraThin size={22} color="inherit" />
+                    </div>
+                    <div className="mx-0 w-9 h-9 bg-[#f0f0f0] flex justify-center items-center">
+                      <PiPhoneCallThin size={22} color="inherit" />
+                    </div>
+                  </div>
+                </button>
+                <button
+                  disabled={true}
+                  className="w-8 h-full text-lg my-auto ml-4 flex justify-center items-center hover:scale-105 transform transition-all duration-200 ease-in-out text-[#616161] hover:text-[#5b5fc7]
+                  disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100
+                  "
+                >
+                  <PiArrowSquareUpThin size={25} color="inherit" />
+                </button>
+                <button className="w-8 h-full text-lg my-auto ml-4 flex justify-center items-center scale-110 transform transition-all duration-200 ease-in-out text-[#424242] hover:text-[#5b5fc7]">
+                  <TbUsersPlus size={20} color="inherit" />
+                  <p className="text-sm font-bold">50</p>
+                </button>
+                <button className="w-8 h-full text-lg my-auto ml-2 flex justify-center items-center hover:scale-105 transform transition-all duration-200 ease-in-out text-[#616161] hover:text-[#5b5fc7]">
+                  <GoLinkExternal size={18} color="inherit" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
