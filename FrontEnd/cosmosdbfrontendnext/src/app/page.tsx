@@ -2,7 +2,8 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import { BsFilter } from "react-icons/bs";
-import { BsPencilSquare } from "react-icons/bs";
+import { BsPencilSquare, BsPencil } from "react-icons/bs";
+import { AiOutlinePlus } from "react-icons/ai";
 import Image from "next/image";
 
 const Home: NextPage = () => {
@@ -68,25 +69,36 @@ const Home: NextPage = () => {
             })}
           </div>
           <div className="shadow-2xl w-[calc(100vw-288px)] bg-[#f5f5f5] h-full">
-            <div className="border-b-[1.5px] border-gray-200 border-solid h-16 flex justify-between items-center px-4">
-              <h3 className="text-2xl">
-                {currentSelectedChat === 0
-                  ? "John Doe"
-                  : currentSelectedChat === 1
-                  ? "Jane Doe"
-                  : currentSelectedChat === 2
-                  ? "John Doe"
-                  : currentSelectedChat === 3
-                  ? "Jane Doe"
-                  : currentSelectedChat === 4
-                  ? "John Doe"
-                  : currentSelectedChat === 5
-                  ? "Jane Doe"
-                  : ""}
-              </h3>
-              <h3 className="text-2xl">
-                Right Side
-              </h3>
+            <div className="border-b-[1.5px] border-gray-200 border-solid h-16 flex justify-between items-center px-5">
+              <div className="flex h-full justify-center items-center">
+                <div className="flex">
+                  <Image
+                    src="https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg"
+                    alt="Picture of the author"
+                    width={40}
+                    height={40}
+                    className="rounded-full w-10 h-10 block border-2 border-gray-400 border-solid"
+                  />
+                  <h3 className="font-normal text-2xl mt-1 ml-3 text-[#424242] text-ellipsis overflow-hidden truncate w-72">
+                    Team Leads - Sep-Nov&lsquo;23 - AI Projects
+                  </h3>
+                  <button className="rounded-full w-8 h-8 mt-1 ml-2 flex justify-center items-center text-[#424242] hover:text-[#5b5fc7]">
+                    <BsPencil size={20} color="inherit" />
+                  </button>
+                </div>
+                <div className="flex h-full ml-4">
+                  <button className="w-8 h-full text-lg font-semibold mt-0 ml-2 flex justify-center items-center text-[#424242] hover:text-[#5b5fc7] border-b-[3px] border-[#5b5fc7] border-solid">
+                    Chat
+                  </button>
+                  <button className="w-8 h-full text-lg mt-0 ml-4 flex justify-center items-center text-[#888888] hover:text-[#5b5fc7] border-b-[3px] border-gray-400 border-solid">
+                    Files
+                  </button>
+                </div>
+                <button className="w-8 h-full text-lg mt-1 ml-4 flex justify-center items-center hover:scale-105 transform transition-all duration-200 ease-in-out text-[#7d7d7d] hover:text-[#5b5fc7]">
+                  <AiOutlinePlus size={25} color="inherit" />
+                </button>
+              </div>
+              <h3 className="text-2xl">Right Side</h3>
             </div>
           </div>
         </div>
